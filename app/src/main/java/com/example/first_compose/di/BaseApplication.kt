@@ -1,4 +1,4 @@
-package com.example.first_compose.ui.di
+package com.example.first_compose.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
