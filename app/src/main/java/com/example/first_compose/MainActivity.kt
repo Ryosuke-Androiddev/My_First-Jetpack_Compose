@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     startDestination = "pokemon_list_screen"
                 ){
                     composable("pokemon_list_screen"){
-
+                        PokemonListScreen(navController = navController)
                     }
                     composable(
                         "pokemon_detail_screen",
@@ -55,15 +55,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    FirstComposeTheme {
-        Greeting("Android")
-    }
-}
