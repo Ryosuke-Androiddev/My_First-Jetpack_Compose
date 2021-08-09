@@ -9,12 +9,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
+import com.example.first_compose.detail.PokemonDetailScreen
 import com.example.first_compose.ui.theme.FirstComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,7 +50,13 @@ class MainActivity : ComponentActivity() {
                             val color = it.arguments?.getInt("dominantColor")
                             color?.let { Color(it) } ?: Color.White
                         }
-                        val pokemonName = it.arguments?.getString("pokemonName")
+                        val pokemonName = remember {
+                            it.arguments?.getString("pokemonName")
+                        }
+                        PokemonDetailScreen(
+                            dominantColor = dominantColor,
+                            pokemonName = pokemonName?.toLowerCase(Locale.current) ?: "",
+                            navController = navController)
                     }
                 }
             }
